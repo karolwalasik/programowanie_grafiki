@@ -13,14 +13,14 @@ const GridWrapper = styled('div')`
 `
 function App() {
     const startMatrix = [
-        [1,0,0,0,0,0,0,0],
+        [0,1,0,0,0,0,1,0],
+        [0,1,1,0,0,0,0,0],
+        [1,0,0,0,0,1,0,0],
+        [0,0,1,0,1,0,0,1],
         [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,1,0,0,1,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
+        [0,0,1,0,0,1,0,0],
         [0,0,0,0,0,0,1,0],
+        [0,0,0,1,0,0,1,0],
     ]
 
     let weightsMatrix64x64 =Array.from(Array(64).fill(undefined), () => new Array(64).fill(undefined));
@@ -79,18 +79,18 @@ function App() {
         </div>
         <p>start</p>
         {!!startMatrix.length && <GridWrapper>
-            {startMatrix.flat().map(el=><span>{el}</span>)}
+            {startMatrix.flat().map(el=><span style={{color: el===1 ? 'red': 'black'}}>{el}</span>)}
         </GridWrapper>}
 
         {!!inputAsArray.length &&<> <p>test</p>
             <GridWrapper>
-                {inputAsArray.map(el=><span>{el}</span>)}
+                {inputAsArray.map(el=><span style={{color: el===1 ? 'red': 'black'}}>{el}</span>)}
             </GridWrapper>
         </> }
 
         {!!resultMatrix.length && <><p>wynik</p>
             <GridWrapper>
-            {resultMatrix.map(el=><span>{el}</span>)}
+            {resultMatrix.map(el=><span style={{color: el===1 ? 'red': 'black'}}>{el}</span>)}
         </GridWrapper></>}
 
     </div>
